@@ -1,0 +1,35 @@
+dependencies:
+  # - <organization/repo>@<version>
+  - smartcontractkit/chainlink@1.10.0
+compiler:
+  solc:
+    version: '0.8.6'
+    remappings:
+      - '@chainlink=smartcontractkit/chainlink@1.10.0'
+dotenv: .env
+networks:
+  goerli:
+    eth_usd_price_feed: '0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e'
+    link_eth_price_feed: '0xb4c4a493AB6356497713A78FFA6c60FB53517c63'
+    # more detail about VRF parameters: https://docs.chain.link/vrf/v2/subscription/supported-networks
+    link_address: '0x326C977E6efc84E512bB9C30f76E30c160eD06FB'
+    vrf_coordinator_address: '0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D'
+    # determines gas lane and is network specific
+    vrf_key_hash: '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15'
+    gwei_for_key_hash: 150
+    # can make True to publish/verify contract on Etherscan
+    publish_source: False
+  development:
+    link_address: '0x326C977E6efc84E512bB9C30f76E30c160eD06FB'
+    vrf_coordinator_address: '0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D'
+    vrf_key_hash: '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15'
+    gwei_for_key_hash: 150
+    publish_source: False
+
+wallets:
+  # '${variable}' -> tells brownie to look for 'variable' in the '.env' file 
+  from_key: ${PRIVATE_KEY}
+
+other:
+  # use this to listen to events of VRF coordinator to know when random # is fulfilled
+  infura_key: ${WEB3_INFURA_PROJECT_ID}

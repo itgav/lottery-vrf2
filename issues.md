@@ -1,0 +1,12 @@
+- lottery contract could definitely be more gas efficient but I was mainly concerned with understanding/exposing myself to solidity -> gas cost will be a later project focus
+- currently have the 'LinkTokenInterface.sol' file so that the owners wallet can send LINK token to the lottery contract
+    - ideally there would be a function within the lottery contract that is only callable by the owner, which transfers "x" LINK from owner to contract
+        - I tried using 'TransferAndCall()' and approving the contract then transferring but couldn't get it to work -> not sure if possible or if I was just doing it incorrectly
+            - issues I was having:
+                - gas estimation error; or
+                - would look at Logs of transaction and the Lottery contract would show up as the transfer  and caller/the approved and transfer from address (forget exactly which one)
+                    - what I want to occur is the owner's wallet shows up as 1 of the addresses and the lottery contract will show as the address being transferred to
+- haven't thoroughly dealt with exceptions/security
+    - in Lottery contract could definitely improve upon this
+- Didn't add any tests. I tested along the way so, to my knowledge, it all works.
+    - Frankly, I'm ready to resume my data analysis project. I like Solidity and smart contracts but making a Lottery contract just to learn Solidity is rather dull. -> excited to work on a DEX project in the future.
